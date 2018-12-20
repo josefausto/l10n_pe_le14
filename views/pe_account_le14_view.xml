@@ -1,0 +1,178 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="view_pe_account_le_14_line_tree">
+      <field name="name">pe.account.le.14.line.tree</field>
+      <field name="model">pe.account.le.14.line</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="sequence"/>
+          <field name="name"/>
+          <field name="document_type"/>
+          <field name="amount_total"/>
+        </tree>
+      </field>
+    </record>
+
+  <record id="view_pe_account_le_14_line_from" model="ir.ui.view">
+        <field name="name">pe.account.le.14.line.form</field>
+        <field name="model">pe.account.le.14.line</field>
+        <field name="arch" type="xml">
+            <form>
+              <!--header>
+                  <button name="action_draft" string="Draft" states="generated,cancelled" type="object" groups="l10n_pe_account.group_pe_account_config_user" />
+                  <button name="action_generated" string="Generated" states="draft" type="object" groups="l10n_pe_account.group_pe_account_config_user" />
+                  <button name="action_done" string="Done" states="generated" type="object" groups="l10n_pe_account.group_pe_account_config_user" />
+                  <button name="action_cancelled" string="cancelled" type="object" states="draft,generated" groups="l10n_pe_account.group_pe_account_config_user" />
+                  <field name="state" widget="statusbar" statusbar_visible="draft,generated,done"/>
+                </header -->
+                <sheet string="Libro electronicos 14.1">
+                  <group string="Informacion General">
+                      <group>
+                          <field name="move_id" required="True"/>
+                          <field name="cuo" required="True"/>
+                          <field name="sequence" required="True"/>
+                      </group>
+                      <group>
+                        <field name="period" required="True" />
+                        <field name="date" required="True" />
+                        <field name="due_date" />
+                      </group>
+                  </group>
+
+                  <group string="Informacion de Moneda">
+                      <group>
+                          <field name="currency_id" required="True" />
+                          <field name="currency_code"/>
+                      </group>
+                      <group>
+                        <field name="rate" />
+                      </group>
+                  </group>                  
+
+                  <group string="Informacion de Factura">
+                      <group>
+                          <field name="document_type"/>
+                          <field name="series"/>
+                          <field name="name"/>
+                          <field name="number_range"/>
+                          <field name="partner_id"/>
+                          <field name="doc_type"/>
+                          <field name="doc_number"/>
+                          <field name="partner_name"/>
+                      </group>
+                      <group>
+                        <field name="amount_export" />
+                        <field name="amount" />
+                        <field name="amount_discount" />
+                        <field name="amount_igv" />
+                        <field name="amount_igv_discount" />
+                        <field name="amount_exonerated" />
+                        <field name="amount_unaffected" />
+                        <field name="amount_isc" />
+                        <field name="amount_base_piled_rice" />
+                        <field name="amount_tax_piled_rice" />
+                        <field name="amount_other" />
+                        <field name="amount_total" />
+                      </group>
+                  </group>
+
+
+                  <group string="Documento Relacionado">
+                      <group>
+                          <field name="related_date"/>
+                          <field name="related_series"/>
+                      </group>
+                      <group>
+                        <field name="related_document_type"/>
+                        <field name="related_number" />
+                      </group>
+                  </group>
+                  <group string="Otros">
+                      <group>
+                          <field name="contract"/>
+                          <field name="error_1"/>
+                      </group>
+                      <group>
+                        <field name="payment_indicator"/>
+                        <field name="status"/>
+                        <field name="other"/>
+                      </group>
+                  </group>
+
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_pe_account_le_14_tree">
+      <field name="name">pe.account.le.14.tree</field>
+      <field name="model">pe.account.le.14</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="state"/>
+          <field name="date"/>
+          <field name="type"/>
+        </tree>
+      </field>
+    </record>
+
+	<record id="view_pe_account_le_14_from" model="ir.ui.view">
+        <field name="name">pe.account.le.14.form</field>
+        <field name="model">pe.account.le.14</field>
+        <field name="arch" type="xml">
+            <form>
+              <header>
+                  <button name="action_draft" string="Draft" states="generated,cancelled" type="object" groups="l10n_pe_account.group_pe_account_config_user" />
+                  <button name="action_generated" string="Generated" states="draft" type="object" groups="l10n_pe_account.group_pe_account_config_user" />
+                  <button name="action_regenerated" string="Regenerated" states="draft" type="object" groups="l10n_pe_account.group_pe_account_config_user" />
+                  <button name="action_done" string="Done" states="generated" type="object" groups="l10n_pe_account.group_pe_account_config_user" />
+                  <button name="action_cancelled" string="cancelled" type="object" states="draft,generated" groups="l10n_pe_account.group_pe_account_config_user" />
+                  <field name="state" widget="statusbar" statusbar_visible="draft,generated,done"/>
+                </header>
+                <sheet string="Libros Electronicos 14.1">
+                  <h1 class="mt0">
+                    <field name="name" readonly="True" class="oe_inline" attrs="{'invisible': [('state','in',('draft'))]}"/>
+                  </h1>
+                  
+                  <group>
+                      <group>
+                          <field name="type"/>
+                          <field name="start_date"/>
+                          <field name="end_date"/>
+                          <field name="date" invisible="True"/>
+                      </group>
+                      <group>
+                        <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                        <field name="operation_code"/>
+                        <field name="indicator_code"/>
+                        <field name="prefix" required="True"/>
+                        
+                      	<field name="datas" filename="datas_fname" />
+                        <field name="datas_fname" invisible="1" class="oe_inline oe_right"/>
+                      </group>
+                  </group>
+
+                  <field name="line_ids"  attrs="{'readonly': [('state','not in',('draft'))]}"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_pe_account_le_14" model="ir.actions.act_window">
+        <field name="name">Electronic Books</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pe.account.le.14</field>
+        <field name="view_type">form</field>
+        <field name="help">Display and manage the Electronic Books 8.1</field>
+    </record>
+    
+    <menuitem name="14 Registro de Ventas" id="menu_pe_account_le_14_root" parent="l10n_pe_account.pe_account_menu" sequence="100" />
+    
+    <menuitem name="14.1 Registro de Ventas" id="menu_pe_account_le_14" parent="menu_pe_account_le_14_root"
+              action="action_pe_account_le_14"/>
+
+
+  </data>
+</odoo>

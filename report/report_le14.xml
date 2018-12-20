@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    
+    <report
+        id="export_xlsx"
+        model="pe.account.le.14"
+        string="Print to XLSX"
+        report_type="xlsx"
+        name="l10n_pe_le14.export_le141_xlsx"
+        file="formato141_excel"
+        attachment_use="False"
+    />
+</odoo>
